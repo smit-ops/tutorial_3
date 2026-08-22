@@ -2,23 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+
+        stage('Build') {
             steps {
-                checkout scm
+                echo 'Building application...'
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Test') {
             steps {
-                bat 'docker build -t tut5 .'
+                echo 'Running tests...'
             }
         }
 
-        stage('Deploy') {
+        stage('Run Application') {
             steps {
-                bat 'docker stop containertut5 || exit 0'
-                bat 'docker rm containertut5 || exit 0'
-                bat 'docker run -d -p 5400:5000 --name containertut5 tut5'
+                echo 'run application'
+                bat 'python app.py'
             }
         }
     }
