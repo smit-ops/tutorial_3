@@ -9,11 +9,10 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            steps {
-                bat 'docker build -t tut5 .'
-            }
-        }
-
+    steps {
+        bat '"C:\Users\Smit\AppData\Local\Programs\DockerDesktop\resources\bin\docker.exe" .'
+    }
+}
         stage('Deploy') {
             steps {
                 bat 'docker stop containertut5 || exit 0'
